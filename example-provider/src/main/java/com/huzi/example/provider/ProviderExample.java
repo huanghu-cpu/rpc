@@ -1,22 +1,30 @@
 package com.huzi.example.provider;
 
-
 import com.huzi.example.common.service.UserService;
+import com.huzi.hurpc.RpcApplication;
 import com.huzi.hurpc.registry.LocalRegistry;
 import com.huzi.hurpc.server.HttpServer;
 import com.huzi.hurpc.server.VertxHttpServer;
 
-public class EasyProviderExample {
+/**
+ * 简易服务提供者示例
+ *
+ * @author
+ * @learn
+ * @from
+ */
+public class ProviderExample {
     public static void main(String[] args) {
+        // RPC 框架初始化
+        RpcApplication.init();
+
         // 注册服务
         LocalRegistry.register(UserService.class.getName(), UserServiceImpl.class);
-        //UserService.class.getName()-----例如，如果 UserService 类位于 com.example 包中，
-        // 那么 UserService.class.getName() 将返回字符串 "com.example.UserService"。
-
 
         // 启动 web 服务
         HttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(8080);
+        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
+
 }
 

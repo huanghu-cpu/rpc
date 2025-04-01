@@ -10,7 +10,7 @@
     <dependencies>
         <dependency>
             <groupId>com.huzi</groupId>
-            <artifactId>hu-rpc-easy</artifactId>
+            <artifactId>hu-rpc-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

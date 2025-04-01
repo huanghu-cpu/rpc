@@ -7,14 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hu-rpc-easy" />
         <module name="example-provider" />
+        <module name="hu-rpc-core" />
         <module name="example-common" />
         <module name="example-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hu-rpc-core" target="17" />
+      <module name="hu-rpc-easy (1)" target="17" />
+      <module name="hu-rpc-easy (2)" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
