@@ -1,6 +1,9 @@
 package com.huzi.example.consumer;
 
+import com.huzi.example.common.model.User;
+import com.huzi.example.common.service.UserService;
 import com.huzi.hurpc.config.RpcConfig;
+import com.huzi.hurpc.proxy.ServiceProxyFactory;
 import com.huzi.hurpc.utils.ConfigUtils;
 
 /**
@@ -12,9 +15,21 @@ import com.huzi.hurpc.utils.ConfigUtils;
  */
 public class ConsumerExample {
     public static void main(String[] args) {
-        RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class, "rpc");
-        System.out.println(rpc);
+        // 获取代理
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
+        User user = new User();
+        user.setName("huzi");
+        // 调用
+        User newUser = userService.getUser(user);
+        if (newUser != null) {
+            System.out.println(newUser.getName());
+        } else {
+            System.out.println("user == null");
+        }
+        long number = userService.getNumber();
+        System.out.println(number);
 
     }
 }
+
 

@@ -34,7 +34,9 @@ public class ConfigUtils {
             configFileBuilder.append("-").append(environment);
         }
         configFileBuilder.append(".properties");
+        //使用这个字符串初始化Props对象，Props对象会读取这个文件或内容，并解析其中的属性。
         Props props = new Props(configFileBuilder.toString());
+        //这行代码调用Props对象的toBean方法，将解析出的属性转换成一个Java对象
         return props.toBean(tClass, prefix);
     }
 

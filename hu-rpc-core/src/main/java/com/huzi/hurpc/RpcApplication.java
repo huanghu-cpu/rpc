@@ -1,7 +1,10 @@
 package com.huzi.hurpc;
 
+import com.huzi.hurpc.config.RegistryConfig;
 import com.huzi.hurpc.config.RpcConfig;
 import com.huzi.hurpc.constant.RpcConstant;
+import com.huzi.hurpc.registry.Registry;
+import com.huzi.hurpc.registry.RegistryFactory;
 import com.huzi.hurpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RpcApplication {
     private static volatile RpcConfig rpcConfig;
 
+
     /**
      * 框架初始化，支持传入自定义配置
      *
@@ -21,7 +25,16 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("rpc init, config = {}", newRpcConfig.toString());
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
+
+        // 创建并注册 Shutdown Hook，JVM 退出时执行操作
+        Runtime.getRuntime().addShutdownHook(new Thread(registry::destroy));
     }
+
     /**
      * 初始化
      */

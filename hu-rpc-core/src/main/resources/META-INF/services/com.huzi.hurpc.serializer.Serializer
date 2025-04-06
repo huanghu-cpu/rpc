@@ -1,0 +1,5 @@
+jdk=com.huzi.hurpc.serializer.JdkSerializer
+hessian=com.huzi.hurpc.serializer.HessianSerializer
+json=com.huzi.hurpc.serializer.JsonSerializer
+kryo=com.huzi.hurpc.serializer.KryoSerializer
+

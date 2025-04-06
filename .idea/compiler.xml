@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="hu-rpc-easy" />
         <module name="example-provider" />
         <module name="hu-rpc-core" />
         <module name="example-common" />
