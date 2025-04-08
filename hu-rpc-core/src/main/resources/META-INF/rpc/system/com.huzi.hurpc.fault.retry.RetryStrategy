@@ -1,0 +1,2 @@
+no=com.huzi.hurpc.fault.retry.NoRetryStrategy
+fixedInterval=com.huzi.hurpc.fault.retry.FixedIntervalRetryStrategy
