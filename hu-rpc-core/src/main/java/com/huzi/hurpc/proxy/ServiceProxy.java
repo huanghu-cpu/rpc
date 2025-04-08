@@ -5,6 +5,8 @@ import com.huzi.hurpc.config.RpcConfig;
 import com.huzi.hurpc.constant.RpcConstant;
 import com.huzi.hurpc.fault.retry.RetryStrategy;
 import com.huzi.hurpc.fault.retry.RetryStrategyFactory;
+import com.huzi.hurpc.fault.tolerant.TolerantStrategy;
+import com.huzi.hurpc.fault.tolerant.TolerantStrategyFactory;
 import com.huzi.hurpc.loadbalancer.LoadBalancer;
 import com.huzi.hurpc.loadbalancer.LoadBalancerFactory;
 import com.huzi.hurpc.model.RpcRequest;
@@ -71,11 +73,17 @@ public class ServiceProxy implements InvocationHandler {
             //ServiceMetaInfo selectedServiceMetaInfo = serviceMetaInfoList.get(0);
             // 发送 TCP 请求
             // 使用重试机制
-            RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
-            RpcResponse rpcResponse = retryStrategy.doRetry(() ->
-                    VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo)
-            );
-            //RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo);
+            RpcResponse rpcResponse;
+            try {
+                RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
+                rpcResponse = retryStrategy.doRetry(() ->
+                        VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo)
+                );
+            } catch (Exception e) {
+                // 容错机制
+                TolerantStrategy tolerantStrategy = TolerantStrategyFactory.getInstance(rpcConfig.getTolerantStrategy());
+                rpcResponse = tolerantStrategy.doTolerant(null, e);
+            }
             return rpcResponse.getData();
         } catch (Exception e) {
             throw new RuntimeException("调用失败");

@@ -1,0 +1,4 @@
+failBack=com.huzi.hurpc.fault.tolerant.FailBackTolerantStrategy
+failFast=com.huzi.hurpc.fault.tolerant.FailFastTolerantStrategy
+failOver=com.huzi.hurpc.fault.tolerant.FailOverTolerantStrategy
+failSafe=com.huzi.hurpc.fault.tolerant.FailSafeTolerantStrategy

@@ -1,6 +1,7 @@
 package com.huzi.hurpc.config;
 
 import com.huzi.hurpc.fault.retry.RetryStrategyKeys;
+import com.huzi.hurpc.fault.tolerant.TolerantStrategyKeys;
 import com.huzi.hurpc.loadbalancer.LoadBalancerKeys;
 import lombok.Data;
 import com.huzi.hurpc.serializer.SerializerKeys;
@@ -56,5 +57,10 @@ public class RpcConfig {
      * 重试策略
      */
     private String retryStrategy = RetryStrategyKeys.NO;
+
+    /**
+     * 容错策略
+     */
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 }
 
