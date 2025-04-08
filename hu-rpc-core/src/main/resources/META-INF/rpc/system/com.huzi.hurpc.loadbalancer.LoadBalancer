@@ -1,0 +1,3 @@
+roundRobin=com.huzi.hurpc.loadbalancer.RoundRobinLoadBalancer
+random=com.huzi.hurpc.loadbalancer.RandomLoadBalancer
+consistentHash=com.huzi.hurpc.loadbalancer.ConsistentHashLoadBalancer

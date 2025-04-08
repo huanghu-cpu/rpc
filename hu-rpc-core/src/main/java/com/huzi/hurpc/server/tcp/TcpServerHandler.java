@@ -27,6 +27,7 @@ public class TcpServerHandler implements Handler<NetSocket> {
     public void handle(NetSocket socket) {
         TcpBufferHandlerWrapper bufferHandlerWrapper = new TcpBufferHandlerWrapper(buffer -> {
             // 处理请求代码
+            System.out.println("收到请求");
             // 接受请求，解码
             ProtocolMessage<RpcRequest> protocolMessage;
             try {

@@ -1,5 +1,6 @@
 package com.huzi.hurpc.config;
 
+import com.huzi.hurpc.loadbalancer.LoadBalancerKeys;
 import lombok.Data;
 import com.huzi.hurpc.serializer.SerializerKeys;
 
@@ -44,6 +45,11 @@ public class RpcConfig {
      */
     private RegistryConfig registryConfig = new RegistryConfig();
 
+
+    /**
+     * 负载均衡器
+     */
+    private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
 
 }
 

@@ -49,7 +49,7 @@ public class ProviderExample {
         VertxTcpServer vertxTcpServer = new VertxTcpServer();
         vertxTcpServer.doStart(8080);
 
-        // 启动 web 服务
+//        // 启动 web 服务
 //        HttpServer httpServer = new VertxHttpServer();
 //        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }

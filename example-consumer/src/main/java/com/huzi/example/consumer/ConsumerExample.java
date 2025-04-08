@@ -2,9 +2,9 @@ package com.huzi.example.consumer;
 
 import com.huzi.example.common.model.User;
 import com.huzi.example.common.service.UserService;
-import com.huzi.hurpc.config.RpcConfig;
 import com.huzi.hurpc.proxy.ServiceProxyFactory;
-import com.huzi.hurpc.utils.ConfigUtils;
+
+
 
 /**
  * 简易服务消费者示例
@@ -14,6 +14,8 @@ import com.huzi.hurpc.utils.ConfigUtils;
  * @from
  */
 public class ConsumerExample {
+
+
     public static void main(String[] args) {
         // 获取代理
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
