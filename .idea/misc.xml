@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/hu-rpc-core/pom.xml" />
+        <option value="$PROJECT_DIR$/example-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/example-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/example-common/pom.xml" />
+        <option value="$PROJECT_DIR$/hu-rpc-easy/pom.xml" />
+        <option value="$PROJECT_DIR$/hu-rpc-spring-boot-starter/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK" />
+</project>
